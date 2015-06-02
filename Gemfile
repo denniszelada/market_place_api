@@ -53,3 +53,4 @@ group :test do
 end
 
 gem 'devise'
+gem 'shoulda-matchers'
