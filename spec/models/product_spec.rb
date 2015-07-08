@@ -11,4 +11,6 @@ describe Product do
   it { should respond_to(:user_id) }
 
   it { should_not be :published }
+
+  it { should belong_to :user}
 end
