@@ -1,8 +1,8 @@
 class Product < ActiveRecord::Base
   validates :title, :user_id, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 },
+                    presence: true
 
-  # we added this line
   belongs_to :user
 
   scope :filter_by_title, lambda { |keyword|
@@ -10,17 +10,17 @@ class Product < ActiveRecord::Base
   }
 
   scope :above_or_equal_to_price, lambda { |price|
-   where("price >= ?", price)
- }
+    where("price >= ?", price)
+  }
 
- scope :below_or_equal_to_price, lambda { |price|
+  scope :below_or_equal_to_price, lambda { |price|
     where("price <= ?", price)
   }
 
   scope :recent, -> {
     order(:updated_at)
   }
-  
+
   def self.search(params = {})
     products = params[:product_ids].present? ? Product.find(params[:product_ids]) : Product.all
 
@@ -31,4 +31,5 @@ class Product < ActiveRecord::Base
 
     products
   end
+
 end

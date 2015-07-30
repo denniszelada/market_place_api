@@ -1,13 +1,13 @@
 class Api::V1::ProductsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:create, :update]
+  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   respond_to :json
-
-  def show
-    respond_with Product.find(params[:id])
-  end
 
   def index
     respond_with Product.search(params)
+  end
+
+  def show
+    respond_with Product.find(params[:id])
   end
 
   def create
@@ -36,7 +36,8 @@ class Api::V1::ProductsController < ApplicationController
 
   private
 
-  def product_params
-    params.require(:product).permit(:title, :price, :published)
-  end
+    def product_params
+      params.require(:product).permit(:title, :price, :published)
+    end
+
 end

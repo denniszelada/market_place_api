@@ -47,7 +47,6 @@ group :development, :test do
   gem "ffaker"
 end
 
-gem 'active_model_serializers'
 
 group :test do
   gem "rspec-rails", "~> 2.14"
@@ -55,3 +54,4 @@ end
 
 gem 'devise'
 gem 'shoulda-matchers'
+gem 'active_model_serializers', git: 'git@github.com:rails-api/active_model_serializers.git', branch: '0-8-stable'

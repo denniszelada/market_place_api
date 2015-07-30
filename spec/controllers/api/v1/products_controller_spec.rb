@@ -94,7 +94,7 @@ describe Api::V1::ProductsController do
         expect(product_response).to have_key(:errors)
       end
 
-      it "renders the json errors on whye the user could not be created" do
+      it "renders the json errors on why the user could not be created" do
         product_response = json_response
         expect(product_response[:errors][:price]).to include "is not a number"
       end
